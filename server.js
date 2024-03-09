@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
+import connectDB from "./helpers/init_mongodb.js";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -16,5 +17,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
+    connectDB();
     console.log(`Server running on port ${PORT}`);
 });
