@@ -12,7 +12,6 @@ const productDetailsSchema = new Schema(
         },
         screenSize: {
             type: String,
-            require: true,
         },
         surfaceMaterial: {
             type: String,
@@ -34,9 +33,20 @@ const productDetailsSchema = new Schema(
         },
         ram: {
             type: String,
-            require: true,
         },
         batteryAndPower: {
+            type: String,
+        },
+        processor: {
+            type: String,
+        },
+        memory: {
+            type: String,
+        },
+        weight: {
+            type: String,
+        },
+        operatingSystem: {
             type: String,
         },
         __v: {
