@@ -1,38 +1,43 @@
 import mongoose, { Schema } from "mongoose";
-import Image from "./Image";
 
 // ProductDetails schema
 const productDetailsSchema = new Schema(
     {
         _id: Schema.Types.ObjectId,
-        images: [Image],
-        color: {
+        screenTechnology: {
+            type: String,
+        },
+        screenResolution: {
+            type: String,
+        },
+        screenSize: {
             type: String,
             require: true,
         },
-        screen: {
+        surfaceMaterial: {
             type: String,
-            require: true,
+        },
+        otherUtilities: {
+            type: String,
+        },
+        capacity: {
+            type: String,
+        },
+        connection: {
+            type: String,
+        },
+        backCamera: {
+            type: String,
+        },
+        frontCamera: {
+            type: String,
         },
         ram: {
             type: String,
             require: true,
         },
-        memory: {
+        batteryAndPower: {
             type: String,
-            require: true,
-        },
-        battery: {
-            type: String,
-            require: true,
-        },
-        price: {
-            type: Number,
-            require: true,
-        },
-        quantity: {
-            type: Number,
-            require: true,
         },
         __v: {
             type: Number,

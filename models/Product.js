@@ -1,5 +1,31 @@
 import mongoose, { Schema } from "mongoose";
 import Category from "./Category.js";
+import Image from "./Image.js";
+
+// Sub-product
+const subProducts = new Schema({
+    subName: {
+        type: String,
+        require: true,
+    },
+    images: [Image],
+    color: {
+        type: String,
+        require: true,
+    },
+    memory: {
+        type: String,
+        require: true,
+    },
+    price: {
+        type: Number,
+        require: true,
+    },
+    quantity: {
+        type: Number,
+        require: true,
+    },
+});
 
 // Product schema
 const productSchema = new Schema(
@@ -19,6 +45,15 @@ const productSchema = new Schema(
             required: true,
             ref: Category,
         },
+        color: {
+            type: Array,
+            require: true,
+        },
+        memory: {
+            type: Array,
+            require: true,
+        },
+        subProducts: [subProducts],
         status: {
             type: String,
             require: true,

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import User from "./User.js";
-import ProductDetails from "./ProductDetails";
+import OrderDetails from "./OrderDetails.js";
 
 // Order schema
 const orderSchema = new Schema(
@@ -11,11 +11,7 @@ const orderSchema = new Schema(
             required: true,
             ref: User,
         },
-        products: [ProductDetails],
-        quantity: {
-            type: Number,
-            require: true,
-        },
+        products: [OrderDetails],
         totalPrice: {
             type: Number,
             require: true,

@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./helpers/init_mongodb.js";
+import AuthRouter from "./routes/Auth.js";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -15,6 +16,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("Hello from Express");
 });
+
+app.use("/auth", AuthRouter);
 
 app.listen(PORT, () => {
     connectDB();
