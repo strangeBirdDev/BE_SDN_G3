@@ -1,14 +1,17 @@
 import mongoose, { Schema } from "mongoose";
 import Category from "./Category.js";
-import Image from "./Image.js";
+import {imageSchema} from "./Image.js";
+import ProductDetails from "./ProductDetails.js"
 
 // Sub-product
 const subProducts = new Schema({
+    _id: Schema.Types.ObjectId,
     subName: {
         type: String,
         require: true,
+        unique: [true, 'Product name already existing'],
     },
-    images: [Image],
+    images: [imageSchema],
     color: {
         type: String,
         require: true,
@@ -18,6 +21,10 @@ const subProducts = new Schema({
         require: true,
     },
     price: {
+        type: Number,
+        require: true,
+    },
+    discountPrice: {
         type: Number,
         require: true,
     },

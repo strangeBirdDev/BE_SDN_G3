@@ -25,4 +25,4 @@ const imageSchema = new Schema(
 
 // Mapping to Collection 'images'
 const Image = mongoose.model("images", imageSchema);
-export default Image;
+export {Image, imageSchema};
