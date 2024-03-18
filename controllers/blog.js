@@ -13,7 +13,7 @@ const getAllBlog = async (req, res, next) => {
 
 const getBlogById = async (req, res, next) => {
   try {
-    const { id } = req.params; // Assuming the id is provided as a route parameter
+    const { id } = req.params;
     const blog = await Blog.findById(id).exec();
     if (!blog) {
       throw createError(404, "Blog not found");
@@ -27,7 +27,7 @@ const getBlogById = async (req, res, next) => {
 const editBlog = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { categoryId, title, body, images } = req.body; // Assuming these are the fields you want to update
+    const { categoryId, title, body, images } = req.body;
     const updatedBlog = await Blog.findByIdAndUpdate(
       id,
       { categoryId, title, body, images },

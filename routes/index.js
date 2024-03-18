@@ -1,3 +1,4 @@
 import productRouter from "./product.js";
 import userRouter from "./user.js";
-export { productRouter, userRouter };
+import blogRouter from "./blog.js";
+export { productRouter, userRouter, blogRouter };
