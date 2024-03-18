@@ -57,17 +57,14 @@ const getAllProduct = async (req, res, next) => {
   }
 }
 
+// U: Update a product by ID
 const updateProductById = async (req, res) => {
-  const { productId } = req.params;
-  const updatedData = req.body;
-
   try {
-    // Update the product with the provided productId
-    const updatedProduct = await Product.findByIdAndUpdate(
-      productId,
-      updatedData,
-      { new: true, omitUndefined: true }
-    ).exec();
+    const productId = req.params.id;
+    const updatedData = req.body;
+
+    // Update the product with the provided productId and ensure new option is set to true
+    const updatedProduct = await Product.findByIdAndUpdate(productId, updatedData, { new: true });
 
     // Check if the product was found and updated
     if (!updatedProduct) {
@@ -78,10 +75,11 @@ const updateProductById = async (req, res) => {
     res.status(200).json(updatedProduct);
   } catch (error) {
     // Handle any errors that occur during the update process
-    console.error('Error updating product:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error.toString() });
   }
 };
+
+
 
 // Make sure to attach this function to the appropriate route in your Express app
 
