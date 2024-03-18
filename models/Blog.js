@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { Image } from "./Image";
 
 // Blog schema
 const blogSchema = new Schema(
@@ -18,7 +17,10 @@ const blogSchema = new Schema(
       type: String,
       required: true,
     },
-    images: [Image],
+    images: {
+      type: Schema.Types.ObjectId,
+      ref: "images",
+    },
     __v: {
       type: Number,
       required: true,
