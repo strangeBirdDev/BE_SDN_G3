@@ -1,5 +1,4 @@
-import productController from "./product.js"
+import productController from "./product.js";
+import userController from "./user.js";
 
-export  {
-    productController
-}
+export { userController, productController };

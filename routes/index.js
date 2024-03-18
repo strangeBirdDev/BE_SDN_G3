@@ -1,3 +1,3 @@
-import productRouter from './product.js';
-
-export  {productRouter};
+import productRouter from "./product.js";
+import userRouter from "./user.js";
+export { productRouter, userRouter };
