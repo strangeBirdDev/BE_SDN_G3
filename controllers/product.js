@@ -77,11 +77,55 @@ const updateProductById = async (req, res) => {
     // Handle any errors that occur during the update process
     res.status(500).json({ error: error.toString() });
   }
-};
+}
 
+const createProduct = async (req, res, next) => {
+  try {
+    const {
+      name,
+      description,
+      category,
+      color,
+      memory,
+      subProducts,
+      status,
+      year,
+      productDetails
+    } = req.body;
 
+    const newProduct = new Product({
+      name,
+      description,
+      category,
+      color,
+      memory,
+      subProducts,
+      status,
+      year,
+      productDetails
+    });
+
+    const savedProduct = await newProduct.save();
+    res.status(201).json(savedProduct);
+  } catch (error) {
+    next(error);
+  }
+}
 
 // Make sure to attach this function to the appropriate route in your Express app
+
+const deleteProductById = async (req, res, next) => {
+  try {
+      const { id } = req.params;
+      const deleteProduct = await Product.findByIdAndDelete(id).exec();
+      if (!deleteProduct) {
+          throw createError(404, "Product not found");
+      }
+      res.send(deleteProduct); 
+  } catch (error) {
+      next(error);
+  }
+}
 
 const getProductById = async (req, res, next) => {
   try {
@@ -96,4 +140,4 @@ const getProductById = async (req, res, next) => {
   }
 };
 
-export default { updateProductById, getProductsByPageAndCategory, getAllProduct, getProductById };
+export default { deleteProductById, createProduct, updateProductById, getProductsByPageAndCategory, getAllProduct, getProductById };

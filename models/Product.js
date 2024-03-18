@@ -35,7 +35,7 @@ const subProducts = new Schema({
 // Product schema
 const productSchema = new Schema(
   {
-    _id: Schema.Types.ObjectId,
+    // _id: Schema.Types.ObjectId,
     name: {
       type: String,
       required: [true, "Product name is required"],
