@@ -17,7 +17,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use("/users", userRouter);
+// Router:
+app.get("/", verifyAccessToken, async (req, res, next) => {
+  //console.log(req.headers['authorization']);
+  res.send("Hello from Express");
+});
+
+app.use("/user", verifyAccessToken, userRouter);
 app.use("/products", productRouter);
 
 // Chỉ định middleware kiểm soát requests không hợp lệ

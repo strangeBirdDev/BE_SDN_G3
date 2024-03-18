@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
 
 const getAllUser = async (req, res, next) => {
   try {
-    const listUser = User.find({}).exec();
+    const listUser = await User.find({}).exec();
     res.send(listUser);
   } catch (error) {
     next(error);
