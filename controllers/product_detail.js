@@ -25,6 +25,46 @@ const getProductDetailById = async (req, res, next) => {
     };
 }
 
+const createNewProductDetail = async (req, res, next) => {
+    try {
+        const { screenTechnology, screenResolution, screenSize, surfaceMaterial, otherUtilities, capacity, connection, backCamera, frontCamera, ram, batteryAndPower } = req.body;
+        
+        // Remove _id from the object
+        const newProductDetail = new ProductDetails({
+            screenTechnology,
+            screenResolution,
+            screenSize,
+            surfaceMaterial,
+            otherUtilities,
+            capacity,
+            connection,
+            backCamera,
+            frontCamera,
+            ram,
+            batteryAndPower
+        });
+
+        const saveProductDetail = await newProductDetail.save();
+        res.status(201).send(saveProductDetail);
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+const deleteProductDetailById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const deleteProductDetail = await ProductDetails.findByIdAndDelete(id).exec();
+        if (!deleteProductDetail) {
+            throw createError(404, "Product Detail not found");
+        }
+        res.send(deleteProductDetail); 
+    } catch (error) {
+        next(error);
+    }
+}
+
 const editProductDetailById = async (req, res, next) => {
     try {
         const { id} = req.params;
@@ -41,4 +81,4 @@ const editProductDetailById = async (req, res, next) => {
     }
 }; 
 
-export default { getAllProductDetails, getProductDetailById, editProductDetailById };
+export default { deleteProductDetailById, createNewProductDetail, getAllProductDetails, getProductDetailById, editProductDetailById };

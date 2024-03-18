@@ -1,5 +1,6 @@
 import Product from "../models/Product.js";
 import Categories from "../models/Category.js";
+import util from 'util';
 
 const getProductsByPageAndCategory = async (req, res) => {
   try {
@@ -54,6 +55,47 @@ const getAllProduct = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+}
+
+const updateProductById = async (req, res) => {
+  const { productId } = req.params;
+  const updatedData = req.body;
+
+  try {
+    // Update the product with the provided productId
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      updatedData,
+      { new: true, omitUndefined: true }
+    ).exec();
+
+    // Check if the product was found and updated
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    // Send the updated product as the response
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    // Handle any errors that occur during the update process
+    console.error('Error updating product:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 };
 
-export default { getProductsByPageAndCategory, getAllProduct };
+// Make sure to attach this function to the appropriate route in your Express app
+
+const getProductById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const products = await Product.findById(id).exec();
+    if(!products) {
+      throw createError(404, "Product not found");
+    }
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { updateProductById, getProductsByPageAndCategory, getAllProduct, getProductById };
