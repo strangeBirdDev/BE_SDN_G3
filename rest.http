@@ -3,3 +3,19 @@ http://localhost:9999/users
 
 ###
 http://localhost:9999/blogs
+
+###
+http://localhost:9999/categories
+
+### create 
+POST  http://localhost:9999/blogs/
+Content-Type: application/json
+
+{
+    "_id": "65f7cd4cd15e237c236f768e",
+    "id": "2",
+    "categoryId": 1,
+    "title": "The Best Tablets for Work and Play",
+    "body": "Tablets are great for both work and play. They are portable, lightweight, and easy to use. In this blog post, we will take a look at the best tablets for work and play. From the iPad Pro to the Microsoft Surface Pro, we have got you covered.",
+    "image": "https://res.cloudinary.com/dck2nnfja/image/upload/v1688448511/blogs/grid_landscape_gjp67e.jpg"
+  },

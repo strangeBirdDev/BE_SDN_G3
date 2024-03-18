@@ -4,7 +4,12 @@ import createError from "http-errors";
 import dotenv from "dotenv";
 import connectDB from "./helpers/init_mongodb.js";
 import { verifyAccessToken } from "./helpers/jwt_helper.js";
-import { blogRouter, productRouter, userRouter } from "./routes/index.js";
+import {
+  blogRouter,
+  cateRouter,
+  productRouter,
+  userRouter,
+} from "./routes/index.js";
 import cors from "cors";
 
 dotenv.config();
@@ -19,6 +24,7 @@ app.use(cors());
 
 app.use("/users", verifyAccessToken, userRouter);
 app.use("/blogs", blogRouter);
+app.use("/categories", cateRouter);
 app.use("/products", productRouter);
 
 // Chỉ định middleware kiểm soát requests không hợp lệ

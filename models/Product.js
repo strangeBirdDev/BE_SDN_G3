@@ -1,7 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import Category from "./Category.js";
 import { imageSchema } from "./Image.js";
-import ProductDetails from "./ProductDetails.js";
 
 // Sub-product
 const subProducts = new Schema({
@@ -50,7 +48,7 @@ const productSchema = new Schema(
     category: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: Category,
+      ref: "categories",
     },
     color: {
       type: Array,
@@ -72,7 +70,7 @@ const productSchema = new Schema(
     productDetails: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: ProductDetails,
+      ref: "product_details",
     },
     __v: {
       type: Number,
