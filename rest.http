@@ -22,7 +22,7 @@ Content-Type: application/json
 {
     "email": "vanhvanh@gmail.com",
     "password": "123"
-}
+} 
 
 
 ###
@@ -42,7 +42,6 @@ Content-Type: application/json
 
 ###
 http://localhost:9999/blogs
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTA4MzAzNzMsImV4cCI6MTcxMDgzMzk3MywiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.85w7n3rgTJMf_-4QQ9yiGSsvQk7Dcy1_2romoibUx4A
 
 ###
 http://localhost:9999/categories
