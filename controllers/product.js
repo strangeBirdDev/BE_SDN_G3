@@ -153,17 +153,99 @@ const testcookie = async (req, res) => {
 }
 
 
+const getAllProduct = async (req, res, next) => {
+  try {
+    const products = await Product.find().populate('category').populate('productDetails');
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+}
 
+// U: Update a product by ID
+const updateProductById = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const updatedData = req.body;
 
+    // Update the product with the provided productId and ensure new option is set to true
+    const updatedProduct = await Product.findByIdAndUpdate(productId, updatedData, { new: true });
 
+    // Check if the product was found and updated
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
 
+    // Send the updated product as the response
+    res.status(200).json(updatedProduct);
+  } catch (error) {
+    // Handle any errors that occur during the update process
+    res.status(500).json({ error: error.toString() });
+  }
+}
 
+const createProduct = async (req, res, next) => {
+  try {
+    const {
+      name,
+      description,
+      category,
+      color,
+      memory,
+      subProducts,
+      status,
+      year,
+      productDetails
+    } = req.body;
 
+    const newProduct = new Product({
+      name,
+      description,
+      category,
+      color,
+      memory,
+      subProducts,
+      status,
+      year,
+      productDetails
+    });
 
-export default {
-  getProductsByPageAndCategory,
-  findSubProductBySubProductId,
+    const savedProduct = await newProduct.save();
+    res.status(201).json(savedProduct);
+  } catch (error) {
+    next(error);
+  }
+}
+
+// Make sure to attach this function to the appropriate route in your Express app
+
+const deleteProductById = async (req, res, next) => {
+  try {
+      const { id } = req.params;
+      const deleteProduct = await Product.findByIdAndDelete(id).exec();
+      if (!deleteProduct) {
+          throw createError(404, "Product not found");
+      }
+      res.send(deleteProduct); 
+  } catch (error) {
+      next(error);
+  }
+}
+
+const getProductById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const products = await Product.findById(id).exec();
+    if(!products) {
+      throw createError(404, "Product not found");
+    }
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default {   findSubProductBySubProductId,
   findProductByProductId,
   findSubProductByStorage,
-  testcookie
-};
+  testcookie, deleteProductById, createProduct, updateProductById, getProductsByPageAndCategory, getAllProduct, getProductById };
