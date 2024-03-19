@@ -11,6 +11,7 @@ import {
   userRouter,
 } from "./routes/index.js";
 import cors from "cors";
+import AuthRouter from "./routes/Auth.js";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -20,10 +21,17 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // Wildcard is NOT for Production
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 
-app.use("/users", verifyAccessToken, userRouter);
-app.use("/blogs", blogRouter);
+app.use("/auth", AuthRouter);
+app.use("/users", userRouter);
+app.use("/blogs", verifyAccessToken, blogRouter);
 app.use("/categories", cateRouter);
 app.use("/products", productRouter);
 

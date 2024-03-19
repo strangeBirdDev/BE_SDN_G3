@@ -2,7 +2,28 @@
 http://localhost:9999/users
 
 ###
+
+POST http://localhost:9999/auth/register
+Content-Type: application/json
+
+{
+    "email": "thopn@fe.edu.vn",
+    "password": "123"
+}
+
+###
+
+POST http://localhost:9999/auth/login
+Content-Type: application/json
+
+{
+    "email": "buitoan3106@gmail.com",
+    "password": "123"
+}
+
+###
 http://localhost:9999/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTA4MzAzNzMsImV4cCI6MTcxMDgzMzk3MywiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.85w7n3rgTJMf_-4QQ9yiGSsvQk7Dcy1_2romoibUx4A
 
 ###
 http://localhost:9999/categories

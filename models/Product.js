@@ -22,10 +22,10 @@ const subProducts = new Schema({
     type: Number,
     require: true,
   },
-  discountPrice: {
-    type: Number,
-    require: true,
-  },
+  // discountPrice: {
+  //   type: Number,
+  //   require: true,
+  // },
   quantity: {
     type: Number,
     require: true,

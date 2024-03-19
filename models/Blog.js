@@ -23,7 +23,6 @@ const blogSchema = new Schema(
     },
     __v: {
       type: Number,
-      required: true,
     },
   },
   {
