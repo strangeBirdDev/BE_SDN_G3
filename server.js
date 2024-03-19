@@ -29,9 +29,9 @@ app.use(
   })
 );
 
-app.use("/auth", AuthRouter);
+app.use("/", AuthRouter);
 app.use("/users", userRouter);
-app.use("/blogs", verifyAccessToken, blogRouter);
+app.use("/blogs", blogRouter);
 app.use("/categories", cateRouter);
 app.use("/products", productRouter);
 

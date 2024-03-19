@@ -12,7 +12,7 @@ const AuthRouter = express.Router();
 
 AuthRouter.post("/register", async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { name, phone, email, password, role } = req.body;
 
     if (!email || !password) throw createError.BadRequest();
 
@@ -24,10 +24,17 @@ AuthRouter.post("/register", async (req, res, next) => {
       password,
       parseInt(process.env.PASSWORD_SECRET)
     );
-    const savedUser = await User.create({ email, password: hashPass });
+    const savedUser = await User.create({
+      name,
+      phone,
+      email,
+      password: hashPass,
+      role,
+    });
 
-    // const accessToken = await signAccessToken(savedUser.id)
+    // const accessToken = await signAccessToken(savedUser.email);
     // res.send({ accessToken });
+
     res.send(savedUser);
   } catch (error) {
     next(error);

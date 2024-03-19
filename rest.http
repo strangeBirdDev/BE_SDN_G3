@@ -1,23 +1,26 @@
 ###
-http://localhost:9999/users
+http://localhost:9999/users/nguyenvana@gmail.com
 
 ###
 
-POST http://localhost:9999/auth/register
+POST http://localhost:9999/register
 Content-Type: application/json
 
 {
-     "email": "buitoan3106@gmail.com",
-    "password": "123"
+  "name": "haha", 
+  "phone": "0978-522-556", 
+  "email": "vanhvanh@gmail.com",
+  "password": "123",
+  "role": "user"
 }
 
 ###
 
-POST http://localhost:9999/auth/login
+POST http://localhost:9999/login
 Content-Type: application/json
 
 {
-    "email": "buitoan3106@gmail.com",
+    "email": "vanhvanh123@gmail.com",
     "password": "123"
 }
 
