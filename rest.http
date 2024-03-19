@@ -7,7 +7,7 @@ POST http://localhost:9999/auth/register
 Content-Type: application/json
 
 {
-    "email": "thopn@fe.edu.vn",
+     "email": "buitoan3106@gmail.com",
     "password": "123"
 }
 
