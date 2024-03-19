@@ -15,6 +15,21 @@ Content-Type: application/json
 }
 
 ###
+PUT http://localhost:9999/users/buitoan3106@gmail.com
+Content-Type: application/json
+
+{
+  "password": "123",
+  "email": "buitoan3106@gmail.com",
+  "name": "Bui Duc Toan pro",
+  "address": "42 LK1 KDT Dai Thanh, Thanh Tri, Ha Noi",
+  "city": "Ha Noi",
+  "phone": "0878-532-644",
+  "role": "Admin"
+}
+
+
+###
 
 POST http://localhost:9999/login
 Content-Type: application/json

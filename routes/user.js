@@ -19,4 +19,6 @@ userRouter.get("/:usernameOrEmail", async (req, res, next) => {
   }
 });
 
+userRouter.put("/:email", userController.updateProfile);
+
 export default userRouter;
