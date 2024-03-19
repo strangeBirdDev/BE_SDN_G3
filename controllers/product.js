@@ -1,6 +1,6 @@
 import Product from "../models/Product.js";
 import Categories from "../models/Category.js";
-import util from 'util';
+import mongoose from "mongoose";
 
 const getProductsByPageAndCategory = async (req, res) => {
   try {
