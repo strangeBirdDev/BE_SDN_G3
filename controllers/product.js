@@ -1,6 +1,6 @@
-// import Product from "../models/Product.js";
-// import Categories from "../models/Category.js";
-// import mongoose from "mongoose";
+import Product from "../models/Product.js"
+import Categories from "../models/Category.js"
+import mongoose from "mongoose";
 
 const getProductsByPageAndCategory = async (req, res) => {
   try {
@@ -76,81 +76,81 @@ const findSubProductBySubProductId = async (req, res) => {
   }
 }
 
-// const findSubProductByStorage = async (req, res) => {
-//   try {
-//     const id=req.query.productId;
-//     const storage=req.query.storage;
-//     const subProduct = await Product
-//     .aggregate([
-//       { $unwind: '$subProducts' }, 
-//       {
-//         $match:
-//           { '_id':new mongoose.Types.ObjectId(id),
-//             'subProducts.memory':storage
-//           }
-//       },
-//       { $project: {subProducts: 1 ,_id:0} },
-//       {
-//         $sort: { 'subProducts.quantity': -1 } 
-//       }
-//     ]);
+const findSubProductByStorage = async (req, res) => {
+  try {
+    const id=req.query.productId;
+    const storage=req.query.storage;
+    const subProduct = await Product
+    .aggregate([
+      { $unwind: '$subProducts' }, 
+      {
+        $match:
+          { '_id':new mongoose.Types.ObjectId(id),
+            'subProducts.memory':storage
+          }
+      },
+      { $project: {subProducts: 1 ,_id:0} },
+      {
+        $sort: { 'subProducts.quantity': -1 } 
+      }
+    ]);
 
-//     // if (subProduct.length === 0) {
-//     //   throw new Error('product not found');
-//     // }
+    // if (subProduct.length === 0) {
+    //   throw new Error('product not found');
+    // }
 
-//     res.status(200).json(subProduct);
-//   } catch (error) {
-//     res.status(500).json({
-//       message_err: error.toString()
-//     });
-//   }
-// }
+    res.status(200).json(subProduct);
+  } catch (error) {
+    res.status(500).json({
+      message_err: error.toString()
+    });
+  }
+}
 
 
-// const findProductByProductId = async (req, res) => {
-//   try {
+const findProductByProductId = async (req, res) => {
+  try {
  
-//     const id=req.params.id;
-//     const product = await Product.findOne({_id:id});
+    const id=req.params.id;
+    const product = await Product.findOne({_id:id});
 
-//     if (!product) {
-//       throw new Error('Sub-product not found');
-//     }
-//     const p = {
-//       name: product.name,
-//       color: product.color,
-//       memory: product.memory,
-//       subProducts:product.subProducts  
-//     };
+    if (!product) {
+      throw new Error('Sub-product not found');
+    }
+    const p = {
+      name: product.name,
+      color: product.color,
+      memory: product.memory,
+      subProducts:product.subProducts  
+    };
 
-//     res.status(200).json(p);
-//   } catch (error) {
-//     res.status(500).json({
-//       message_err: error.toString()
-//     });
-//   }
-// }
+    res.status(200).json(p);
+  } catch (error) {
+    res.status(500).json({
+      message_err: error.toString()
+    });
+  }
+}
 
 
-// const testcookie = async (req, res) => {
-//   try {
+const testcookie = async (req, res) => {
+  try {
  
-//     const id=req.params.id;
-//     const product = await Product.findOne({_id:id});
+    const id=req.params.id;
+    const product = await Product.findOne({_id:id});
 
-//     if (!product) {
-//       throw new Error('Sub-product not found');
-//     }
-//     res.cookie('product', product, { maxAge: 900000});
+    if (!product) {
+      throw new Error('Sub-product not found');
+    }
+    res.cookie('product', product, { maxAge: 900000});
 
-//     res.send('Cookie đã được tạo!');
-//   } catch (error) {
-//     res.status(500).json({
-//       message_err: error.toString()
-//     });
-//   }
-// }
+    res.send('Cookie đã được tạo!');
+  } catch (error) {
+    res.status(500).json({
+      message_err: error.toString()
+    });
+  }
+}
 
 
 const getAllProduct = async (req, res, next) => {
