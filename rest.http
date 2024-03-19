@@ -7,11 +7,11 @@ POST http://localhost:9999/register
 Content-Type: application/json
 
 {
-  "name": "vanhvanh", 
+  "name": "vvanh", 
   "phone": "0978-522-556", 
-  "email": "admin@mail.com",
+  "email": "quynh@gmail.com",
   "password": "123",
-  "role": "Admin"
+  "role": "user"
 }
 
 ###
@@ -20,7 +20,7 @@ POST http://localhost:9999/login
 Content-Type: application/json
 
 {
-    "email": "vanhvanh@gmail.com",
+    "email": "quynh@gmail.com",
     "password": "123"
 } 
 

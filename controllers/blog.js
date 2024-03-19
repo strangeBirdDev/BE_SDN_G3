@@ -44,7 +44,7 @@ const editBlog = async (req, res, next) => {
 
 const addNewBlog = async (req, res, next) => {
   try {
-    const { categoryId, title, body, images } = req.body;
+    const { categoryId, title, body, images } = req.body; // Ensure field name is "images"
     const newBlog = new Blog({ categoryId, title, body, images });
     const savedBlog = await newBlog.save();
     res.status(201).send(savedBlog);
