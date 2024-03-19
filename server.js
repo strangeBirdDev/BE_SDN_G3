@@ -2,8 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./helpers/init_mongodb.js";
-import {productRouter} from './routes/index.js';
-import cors from 'cors';
+import { productRouter } from "./routes/index.js";
+import cors from "cors";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -13,9 +13,10 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public"));
+app.use("/public", express.static("public"));
 
-
-app.use('/products',productRouter);
+app.use("/products", productRouter);
 
 app.listen(PORT, () => {
     connectDB();
