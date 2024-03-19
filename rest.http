@@ -20,7 +20,7 @@ POST http://localhost:9999/login
 Content-Type: application/json
 
 {
-    "email": "admin@mail.com",
+    "email": "vanhvanh@gmail.com",
     "password": "123"
 }
 
