@@ -1,0 +1,95 @@
+GET http://localhost:9999
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAyNjAwMDcsImV4cCI6MTcxMDI2MzYwNywiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.qOfH3e9R6EmKPJccR3v6TZOsl6szeSwTp0MyDySRrow
+###
+GET http://localhost:9999/abc-xyz
+
+
+###
+GET localhost:9999/products?category=Ipad
+
+###
+GET localhost:9999/products/subProduct
+Content-Type: application/json
+
+{
+    "subProductId": "65f26d3634d373021e40931e",
+    "password": "123"
+}
+
+###
+
+POST http://localhost:9999/auth/register
+Content-Type: application/json
+
+{
+    "email": "thopn@fe.edu.vn",
+    "password": "123"
+}
+
+###
+
+POST http://localhost:9999/auth/login
+Content-Type: application/json
+
+{
+    "email": "thopn3@fe.edu.vn",
+    "password": "1234"
+}
+
+###
+POST http://localhost:9999/auth/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAyMjg1MDgsImV4cCI6MTc0MTc4NjEwOCwiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.c7HxYPKImB3Tgvw4wzj3D-T6hRtVp6zEHj11nV2RS4c"
+}
+
+###
+DELETE  http://localhost:9999/auth/logout
+
+### Get all genres
+GET http://localhost:9999/genre
+
+### Create a new genre
+POST http://localhost:9999/genre/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAyNjAwMDcsImV4cCI6MTcxMDI2MzYwNywiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.qOfH3e9R6EmKPJccR3v6TZOsl6szeSwTp0MyDySRrow
+Content-Type: application/json
+
+{
+  "name": "Khoa học - Nghệ thuật 123"
+}
+
+### Get all movies
+GET http://localhost:9999/movie
+
+### Get movie by id = '65f0839d3a3860fdd6ffaac0'
+GET http://localhost:9999/movie/65f0839d3a3860fdd6ffaac0
+
+### Find movies by title
+### Get movie by title = 'nạ'
+GET http://localhost:9999/movie/search/con
+
+### Create a new movie
+POST http://localhost:9999/movie/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAyOTUwMTIsImV4cCI6MTcxMDI5ODYxMiwiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.-kwqHvST8faarz2_m537XtPG6Z06UuKRYyxD0uL8Opk
+Content-Type: application/json
+
+{
+  "title": "Về nhà đi con - 2",
+  "year": 2022,
+  "genre": "65f08060645b2ffe829b3bb4"
+}
+
+### Edit a movie
+PUT http://localhost:9999/movie/edit/65f10802344b7e16e1f3df51
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAyOTUwMTIsImV4cCI6MTcxMDI5ODYxMiwiYXVkIjoiNjVlZGUyODRhMmE2NGJlOTE2ZmRmN2MyIiwiaXNzIjoibG9jYWxob3N0Ojk5OTkifQ.-kwqHvST8faarz2_m537XtPG6Z06UuKRYyxD0uL8Opk
+Content-Type: application/json
+
+{
+  "title": "Về nhà đi con - 4",
+  "year": 2024,
+  "genre": "65f08060645b2ffe829b3bb4"
+}
+
+### Delete a movie
+DELETE http://localhost:9999/movie/delete/65f58d068fbdadde0f4203a4
