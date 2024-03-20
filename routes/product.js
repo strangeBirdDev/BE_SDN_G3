@@ -8,7 +8,10 @@ productRouter.get('/', productController.getProductsByPageAndCategory );
 productRouter.get('/find/:id', productController.findProductByProductId );
 productRouter.get('/subProduct/:id', productController.findSubProductBySubProductId);
 productRouter.get('/subProduct', productController.findSubProductByStorage);
-productRouter.get('/cookie/:id', productController.testcookie);
+productRouter.get('/subPro', productController.findSubProductByStorageAndColor);
+productRouter.get('/setCart', productController.setCartProductsFromCookie);
+productRouter.get('/cart', productController.getCartProductsFromCookie);
+productRouter.delete('/cart', productController.deleteProductsFromCookie);
 
 
 export default productRouter;

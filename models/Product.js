@@ -11,7 +11,9 @@ const subProducts = new Schema({
         require: true,
         unique: [true, 'Product name already existing'],
     },
-    images: [imageSchema],
+    images: {
+        type: Array,
+    },
     color: {
         type: String,
         require: true,
@@ -56,7 +58,7 @@ const productSchema = new Schema(
             type: Array,
             require: true,
         },
-        memory: {
+        storage: {
             type: Array,
             require: true,
         },
