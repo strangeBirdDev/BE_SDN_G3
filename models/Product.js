@@ -1,7 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import Category from "./Category.js";
-import {imageSchema} from "./Image.js";
-import ProductDetails from "./ProductDetails.js"
+import { imageSchema } from "./Image.js";
 
 // Sub-product
 const subProducts = new Schema({
@@ -9,7 +7,7 @@ const subProducts = new Schema({
     subName: {
         type: String,
         require: true,
-        unique: [true, 'Product name already existing'],
+        unique: [true, "Product name already existing"],
     },
     images: {
         type: Array,
@@ -39,7 +37,7 @@ const subProducts = new Schema({
 // Product schema
 const productSchema = new Schema(
     {
-        _id: Schema.Types.ObjectId,
+        // _id: Schema.Types.ObjectId,
         name: {
             type: String,
             required: [true, "Product name is required"],
@@ -52,9 +50,13 @@ const productSchema = new Schema(
         category: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: Category,
+            ref: "categories",
         },
         color: {
+            type: Array,
+            require: true,
+        },
+        storage: {
             type: Array,
             require: true,
         },
@@ -74,7 +76,7 @@ const productSchema = new Schema(
         productDetails: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: ProductDetails,
+            ref: "product_details",
         },
         __v: {
             type: Number,

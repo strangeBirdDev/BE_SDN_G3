@@ -3,7 +3,6 @@ import mongoose, { Schema } from "mongoose";
 // ProductDetails schema
 const productDetailsSchema = new Schema(
     {
-        _id: Schema.Types.ObjectId,
         screenTechnology: {
             type: String,
         },
@@ -51,7 +50,7 @@ const productDetailsSchema = new Schema(
         },
         __v: {
             type: Number,
-            required: true,
+            required: false,
         },
     },
     {

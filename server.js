@@ -2,13 +2,9 @@ import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./helpers/init_mongodb.js";
-
-import {productRouter} from './routes/index.js';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-
-
-
+import { productRouter, cateRouter } from "./routes/index.js";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -21,8 +17,12 @@ app.use(cors({
     credentials: true
   }));
 app.use(express.json());
-
-
+app.use(
+    cors({
+        origin: true,
+        credentials: true,
+    })
+);
 
 app.use(cookieParser());
 
@@ -31,6 +31,7 @@ app.use("/public", express.static("public"));
 
 
 app.use("/products", productRouter);
+app.use("/categories", cateRouter);
 
 app.listen(PORT, () => {
     connectDB();
