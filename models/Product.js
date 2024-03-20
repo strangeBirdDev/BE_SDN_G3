@@ -56,7 +56,7 @@ const productSchema = new Schema(
             type: Array,
             require: true,
         },
-        memory: {
+        storage: {
             type: Array,
             require: true,
         },

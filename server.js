@@ -12,6 +12,10 @@ const PORT = process.env.PORT;
 const app = express();
 // Ghi log khi cos request call api
 app.use(morgan("dev"));
+app.use(cors({
+    origin: true,
+    credentials: true
+  }));
 app.use(express.json());
 app.use(
     cors({
@@ -24,6 +28,7 @@ app.use(cookieParser());
 
 app.use(express.static("public"));
 app.use("/public", express.static("public"));
+
 
 app.use("/products", productRouter);
 app.use("/categories", cateRouter);
